@@ -1,0 +1,5 @@
+.pageHeader {
+    display: flex;
+    flex-direction: row;
+    margin: 3px 0 3px 0;
+}

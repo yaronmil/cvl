@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class='pageHeader'>
+        <div class="mx-auto">
+          <h3 >products in store</h3>
+        </div>
+        <button  (click)="createProduct()" type="button" class="btn btn-primary">
+          create product
+        </button>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products$ | async" (click)='editProduct(product)'>
+            <th>{{product.ID}}</th>
+            <td>{{product.Name}}</td>
+            <td>{{product.Description}}</td>
+            <td>{{product.Price?product.Price+'$':''}}</td>
+            <td>
+              <button (click)="deleteProduct(product.ID)" type="button" class="btn btn-default">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3" style="padding-top:10px; ">
+      <app-product-details *ngIf="selectedProduct" [panMode]='paneMode' [product]='selectedProduct'  (closeDetailsPane)='closePane()'></app-product-details>
+    </div>
+  </div>
+</div>
